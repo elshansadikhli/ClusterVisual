@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebVis</title>
+    <script src="src/d3.js"></script>
+    <script src="src/clustermap.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="plot"></div>
+    <div id="toolboxBox" class="toolbox">
+        <div id="instructions" class="toolbox-container" >
+            <h1 class="toolbox-hds" >Instructions
+                <button class="toolbox-min-btns" id="instructions-min-btn" >—</button>
+            </h1>
+            <div id="instructions-body" class="toolbox-body">
+                <ul id="instructions-lst">
+                    <li>Drag cluster names to reorder the clusters</li>
+                    <li>Hover over a locus to reveal a box and handles</li>
+                    <li>Drag box to move the locus, drag handles to resize it</li>
+                    <li>Click the genes to anchor a figure around them</li>
+                    <li>Right click genes to edit their labels</li>
+                    <li>Click cluster names and legend entries to remove them and hide links.</li>
+                    <li>Click scale bar text to change its lenth</li>
+                    <li>Right click legend entries to remove them and hide links</li>
+                    <li>Click scale bar text to change its lenth</li>
+                    <li>Tweak other options below</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="controls" class="toolbox-container" >
+            <h1 id="control-head" class="toolbox-hds" >Controls
+                <button class="toolbox-min-btns" id="controls-min-btn" >—</button>
+            </h1>
+            <div id="controls-body" class="toolbox-body">
+                <button class="controls-btns" id="btn-save-svg">Save SVG</button>
+                <button class="controls-btns" id="btn-showName" >Show all labels</button>
+            </div>
+        </div>
+        
+    </div>
+    <script src="./visualScrip.js" type="module"></script>
+    
+</body>
+</html>
