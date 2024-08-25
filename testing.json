@@ -111,8 +111,8 @@
 	],
 	"groups": [
 		{
-			"uid": "group10",
-			"label": "group 10",
+			"uid": "group1",
+			"label": "group 1",
 			"genes": ["0", "1001"]
 		},
 		{
@@ -121,8 +121,8 @@
 			"genes": ["1", "1002"]
 		},
 		{
-			"uid": "group300",
-			"label": "group 300",
+			"uid": "group3",
+			"label": "group 3",
 			"genes": ["3", "1003"]
 		}
 	]

@@ -299,28 +299,25 @@
         .attr("class", "tooltip-contents")
         .style("display", "flex")
         .style("flex-direction", "column");
-
       // Add <input> so label can be edited directly
-      div.append("text").text("Edit label").style("margin", "2px");
+      div.append("text").text("Edit label").style("margin-top", "20px");
       let text = div
         .append("input")
         .attr("type", "input")
         .attr("value", g.name || g.uid); //Modified to edit g.name instead of g.label
-      //console.log(g);
-      // Add multiple <select> for each saved gene identifier
-      // Modified to fix the error
-      div.append("text").text("Gene qualifiers");
-      let quals = Object.values(g.name); //Modified (added line)
-      let select = div.append("select").attr("multiple", true);
+      // Add multiple <select> for each saved gene identifier (deleted)
+      // Modified to fix the error (no "g.names" created bc clinker was not used)
+      let select = div
+        .append("select")
+        .attr("multiple", true)
+        .style("display", "none");
       select
         .selectAll("option")
-        //.data(Object.keys(g.names))
         .join("option")
         .text((d) => `${g.names[d]} [${d}]`)
         .attr("value", (d) => g.names[d]);
-
       // Add group label
-      let group = div.append("div").style("margin-top", "-15px").append("text");
+      let group = div.append("div").style("margin-top", "-1px").append("text");
       let groupId = scales.group(g.uid);
       group.append("tspan").text("Similarity group: ");
       group
@@ -370,7 +367,7 @@
       tip.append(() => _gene.tooltipHTML(data).node());
 
       // Get position relative to clicked element
-      // Modified so Toolbox won't to be shown on then plot
+      // Modified so Toolbox won't to be shown on the plot
       let rect = event.target.getBoundingClientRect();
       let bbox = tip.node().getBoundingClientRect();
       let xOffset = rect.width / 2 - bbox.width / 2;
@@ -1450,7 +1447,6 @@
           const selected = [];
           for (let opt of select.node().options)
             if (opt.selected) selected.push(opt);
-
           // Find indexes of selected groups in groups
           // + Merge genes to the current group
           // + Remove them from the multiselect
@@ -1513,8 +1509,8 @@
       // Get position relative to clicked element
       let rect = event.target.getBoundingClientRect();
       let bbox = tip.node().getBoundingClientRect();
-      let xOffset = rect.width / 2 - bbox.width / 2 + 250;
-      let yOffset = rect.height * 1;
+      let xOffset = rect.width / 2 - bbox.width / 2;
+      let yOffset = rect.height * 1.2;
 
       // Adjust position and show tooltip
       // Add a delayed fade-out transition if user does not enter tooltip
@@ -1925,7 +1921,7 @@
               .on("zoom", (event) => g.attr("transform", event.transform))
               .on("start", () => svg.attr("cursor", "grabbing"))
               .on("end", () => svg.attr("cursor", "grab"));
-            let transform = d3.zoomIdentity.translate(180, 100).scale(1.3); //Modifies the size
+            let transform = d3.zoomIdentity.translate(350, 100).scale(1); //Modifies the size
             svg
               .call(zoom)
               .call(zoom.transform, transform)
